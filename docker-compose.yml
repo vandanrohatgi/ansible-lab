@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  master:
+    build: ./master
+    container_name: master
+    hostname: master
+    volumes:
+    - type: bind
+      source: /mnt/c/Users/hackd/ansible-lab/shared
+      target: /shared
+
+  worker1:
+    build: ./worker1
+    container_name: worker1
+    hostname: worker1
+    volumes:
+    - type: bind
+      source: /mnt/c/Users/hackd/ansible-lab/shared
+      target: /shared
