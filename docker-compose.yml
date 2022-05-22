@@ -1,19 +1,26 @@
-version: '3.9'
+version: '3.5'
+
 services:
   master:
     build: ./master
     container_name: master
     hostname: master
-    volumes:
-    - type: bind
-      source: /mnt/c/Users/hackd/ansible-lab/shared
-      target: /shared
-
+    #volumes:
+    #- type: bind
+    #  source: ./shared
+    #  target: /root/.ssh
+    tty: true
+    stdin_open: true
+    #command: /bin/bash
+    #command: cp -r /mnt/shared/ /root/.ssh/
+    entrypoint: /bin/bash
   worker1:
     build: ./worker1
     container_name: worker1
     hostname: worker1
-    volumes:
-    - type: bind
-      source: /mnt/c/Users/hackd/ansible-lab/shared
-      target: /shared
+    #volumes:
+    #- type: bind
+    #  source: ./shared
+    #  target: /mnt/shared
+    command: service ssh start
+    
