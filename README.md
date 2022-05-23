@@ -1,4 +1,4 @@
-## continue this project from a proper linux OS
+## Ansible lab
 
 A docker lab to play around with Ansible. The lab contains one master container and 2 workers to execute ansible commands. 
 
