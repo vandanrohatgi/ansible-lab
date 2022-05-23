@@ -22,5 +22,5 @@ services:
     #- type: bind
     #  source: ./shared
     #  target: /mnt/shared
-    command: service ssh start
-    
+    #entrypoint: [ "sh", "/etc/init.d/ssh", "start"]
+    entrypoint: [ "/usr/sbin/sshd","-D" ]
