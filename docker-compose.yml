@@ -5,22 +5,20 @@ services:
     build: ./master
     container_name: master
     hostname: master
-    #volumes:
-    #- type: bind
-    #  source: ./shared
-    #  target: /root/.ssh
     tty: true
     stdin_open: true
-    #command: /bin/bash
-    #command: cp -r /mnt/shared/ /root/.ssh/
     entrypoint: /bin/bash
   worker1:
     build: ./worker1
     container_name: worker1
     hostname: worker1
-    #volumes:
-    #- type: bind
-    #  source: ./shared
-    #  target: /mnt/shared
-    #entrypoint: [ "sh", "/etc/init.d/ssh", "start"]
     entrypoint: [ "/usr/sbin/sshd","-D" ]
+    depends_on:
+      - master
+  worker2:
+    build: ./worker2
+    container_name: worker2
+    hostname: worker2
+    entrypoint: [ "/usr/sbin/sshd","-D" ]
+    depends_on:
+      - master
